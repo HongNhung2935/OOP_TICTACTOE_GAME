@@ -372,8 +372,8 @@ class MainGAME {
         MainGAME (MainGAME& otherGame): mainMenu (otherGame.mainMenu), gameBoard (otherGame.gameBoard) {}
 
         // methods
-        template <typename T, typename N>
-        void settingBeforeGame (T* firstPlayer, N* secondPlayer){
+        // overloading
+        void settingBeforeGame (HumanPLAYER* firstPlayer, HumanPLAYER* secondPlayer){
             setColor (commandColor);
             string name;
             string partnerName;
@@ -390,13 +390,37 @@ class MainGAME {
             firstPlayer -> setName (name);
             secondPlayer -> setName (partnerName);
 
-            setPosition ({0, screenHEIGHT});
-            for (int i = 0; i < screenWIDTH; ++i) std::cout << " ";
+            clearing (screenWIDTH, 1, commandColor, {0, screenHEIGHT});
                    
             setPosition ({0, screenHEIGHT});
             std::cout << commandPlayingOrder;
             setPosition ({(int)commandPlayingOrder.size() + 1, screenHEIGHT});
         }
+
+        void settingBeforeGame (HumanPLAYER* firstPlayer, ComputerPLAYER* secondPlayer){
+            setColor (commandColor);
+            string name;
+            setPosition ({0, screenHEIGHT});
+            std::cout << commandInput1;
+            setPosition ({(int)commandInput1.size() + 1, screenHEIGHT});
+            std::cin >> name;
+            firstPlayer -> setName (name);
+            secondPlayer -> setName ("COMPUTER");
+            clearing (screenWIDTH, 1, commandColor, {0, screenHEIGHT});
+            setPosition ({0, screenHEIGHT});
+            std::cout << commandPlayingOrder;
+            setPosition ({(int)commandPlayingOrder.size() + 1, screenHEIGHT});
+        }
+
+        void settingBeforeGame (ComputerPLAYER* firstPlayer, ComputerPLAYER* secondPlayer){
+            firstPlayer -> setName ("COMPUTER 1");
+            secondPlayer -> setName ("COMPUTER 2");
+            clearing (screenWIDTH, 1, commandColor, {0, screenHEIGHT});
+            setPosition ({0, screenHEIGHT});
+            std::cout << commandPlayingOrder;
+            setPosition ({(int)commandPlayingOrder.size() + 1, screenHEIGHT});
+        }
+
 
         // main game
         void startGame () {
