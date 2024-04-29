@@ -29,8 +29,8 @@ const string commandMove = "input turn [1-9]: ";
 const string commandInput1 = "input your name, player 1: ";
 const string commandInput2 = "input your name, player 2: ";
 const string commandPlayingOrder = "who first, player1 (1) or player 2 (2): ";
-const string innovationTie = "NO ONE WIN";
-const string innovationWin = "THE WINNER IS: ";
+const string announcementTie = "NO ONE WIN";
+const string announcementWin = "THE WINNER IS: ";
 const string GameTitle = "TIC-TAC-TOE GAME";
 
 #define DefaultColor 250
@@ -292,8 +292,8 @@ class PLAYER {
                     clearing (screenWIDTH, 1, DefaultColor, {0, screenHEIGHT-3});
                     setPosition ({17, screenHEIGHT - 3});
                     setColor (233);
-                    std::cout << innovationWin;
-                    setPosition ({(int)innovationWin.size() + 17, screenHEIGHT - 3});
+                    std::cout << announcementWin;
+                    setPosition ({(int)announcementWin.size() + 17, screenHEIGHT - 3});
                     std::cout << name;
                     setColor(0);
                     setPosition ({0, screenHEIGHT + 1});
@@ -303,7 +303,7 @@ class PLAYER {
                     clearing (screenWIDTH, 1, DefaultColor, {0, screenHEIGHT-3});
                     setPosition ({17, screenHEIGHT - 3});
                     setColor (177);
-                    std::cout << innovationTie;
+                    std::cout << announcementTie;
                     setColor(0);
                     setPosition ({0, screenHEIGHT + 1});
                     system("pause");
